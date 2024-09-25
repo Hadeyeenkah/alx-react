@@ -1,11 +1,13 @@
 // test-list.js
 import { getListObject, addElementToList } from './3-list.js';
 
-// Convert an array to an immutable List
-const list = getListObject([1, 2, 3]);
-console.log(list);  // Should log List [1, 2, 3]
+// Test data
+const array = ['apple', 'banana', 'cherry'];
+const list = getListObject(array);
 
-// Add a new element to the immutable List
-const updatedList = addElementToList(list, 'newElement');
-console.log(updatedList);  // Should log List [1, 2, 3, 'newElement']
+console.log('Original List:', list.toJS()); // Convert Immutable List to JS array for display
+
+// Add an element to the List
+const updatedList = addElementToList(list, 'date');
+console.log('Updated List:', updatedList.toJS()); // Convert back to JS array to view changes
 
