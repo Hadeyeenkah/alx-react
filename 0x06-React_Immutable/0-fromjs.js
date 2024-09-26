@@ -17,8 +17,6 @@ const obj = {
 // Get the immutable Map
 const immutableMap = getImmutableObject(obj);
 
-// Print each key-value pair
-immutableMap.forEach((value, key) => {
-    console.log(`${key}: ${value}`);
-});
+// Convert the Immutable Map to a plain JavaScript object and print it
+console.log(immutableMap.toJS());
 
