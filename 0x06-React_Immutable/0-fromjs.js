@@ -14,7 +14,11 @@ const obj = {
     thing: -914767132
 };
 
-// Print the immutable Map
+// Get the immutable Map
 const immutableMap = getImmutableObject(obj);
-console.log(immutableMap); // This will print the Immutable.js Map to the console
+
+// Print each key-value pair
+immutableMap.forEach((value, key) => {
+    console.log(`${key}: ${value}`);
+});
 
