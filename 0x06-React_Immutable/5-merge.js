@@ -1,14 +1,5 @@
-import { Map } from 'immutable';
+import { List, Map } from 'immutable';
 
-export const map = Map({
-  1: 'Liam',
-  2: 'Noah',
-  3: 'Elijah',
-  4: 'Oliver',
-  5: 'Jacob',
-  6: 'Lucas',
-});
+export const concatElements = (page1, page2) => List(page1).concat(List(page2));
 
-export const map2 = map.withMutations((values) => {
-  values.set(2, 'Benjamin').set(4, 'Oliver');
-});
+export const mergeElements = (page1, page2) => Map(page1).merge(Map(page2));
