@@ -1,10 +1,5 @@
-// 1-map.js
-import { Map } from 'immutable';  // Import Map from Immutable.js
+import { Map } from 'immutable';
 
-// Function that converts a regular object into an immutable Map
-function getImmutableObject(object) {
-  return Map(object);  // Use Map to create an immutable object from the given object
-}
+const getImmutableObject = (object) => Map(object);
 
-export default getImmutableObject;  // Export the function for use in other files
-
+export default getImmutableObject;
