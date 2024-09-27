@@ -1,24 +1,24 @@
-// 8-seq.js
-import Immutable from 'immutable';
+import { Seq } from 'immutable';
 
-// Extract the Map and Seq functions from the imported Immutable object
-const { Map, Seq } = Immutable;
+export default function printBestStudents(object) {
+  const seq = Seq(object);
 
-// Function to print the names of students with a score >= 70
-export function printBestStudents(grades) {
-  // Convert the grades object to an Immutable Map
-  const gradesMap = Map(grades);
+  const filtered = seq.filter((student) => {
+    student.firstName.charAt(0).toUpperCase();
+    return student.score > 70;
+  });
 
-  // Use Seq to iterate over the gradesMap
-  Seq(gradesMap)
-    .map(student => Map(student)) // Ensure each student is an Immutable Map
-    .filter(student => student.get('score') >= 70) // Filter students with score >= 70
-    .forEach(student => {
-      // Capitalize first letter of firstName and lastName
-      const firstName = student.get('firstName').charAt(0).toUpperCase() + student.get('firstName').slice(1);
-      const lastName = student.get('lastName').charAt(0).toUpperCase() + student.get('lastName').slice(1);
-      
-      console.log(`${firstName} ${lastName}`); // Print the names
-    });
+  function capFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  }
+
+  const JSObject = filtered.toJS();
+
+  Object.keys(JSObject).map((key) => {
+    JSObject[key].firstName = capFirstLetter(JSObject[key].firstName);
+    JSObject[key].lastName = capFirstLetter(JSObject[key].lastName);
+    return JSObject[key];
+  });
+
+  console.log(JSObject);
 }
-
